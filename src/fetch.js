@@ -6,13 +6,14 @@ import { error } from './process';
  * via their JS SDK
  */
 export default class DirectusFetcher {
-    constructor(url, project, email, password) {
-        this.email = email;
-        this.password = password;
+    constructor(url, project, token) {
+        this.token = token;
+
         try {
             this.client = new DirectusSDK({
                 url,
                 project: project || '_',
+                token,
             });
         } catch (e) {
             error('Error initializing DirectusFetcher: ', e);
